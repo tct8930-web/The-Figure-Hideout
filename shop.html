@@ -4,6 +4,8 @@
 <head>
     <title>Shop - The Figure Hideout</title>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -16,17 +18,37 @@
             background: linear-gradient(135deg, #111, #333);
             color: white;
             text-align: center;
-            padding: 50px 20px;
+            padding: 60px 20px;
         }
 
         header h1 {
-            font-size: 40px;
-            margin: 0 0 10px;
+            font-size: 42px;
+            margin: 0 0 12px;
         }
 
         header p {
             font-size: 18px;
-            margin-bottom: 25px;
+            max-width: 650px;
+            margin: 10px auto;
+            line-height: 1.6;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 12px 20px;
+            margin: 8px 4px;
+            background: #111;
+            color: white;
+            text-decoration: none;
+            border-radius: 7px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+
+        header .button {
+            background: white;
+            color: #111;
         }
 
         nav {
@@ -50,25 +72,55 @@
             text-decoration: underline;
         }
 
-        .button {
-            display: inline-block;
-            padding: 12px 20px;
-            margin-top: 10px;
-            background: #111;
-            color: white;
-            text-decoration: none;
+        .shop-tools {
+            max-width: 1000px;
+            margin: 30px auto 10px;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .shop-tools h2 {
+            font-size: 30px;
+            margin-bottom: 8px;
+        }
+
+        .shop-tools p {
+            color: #666;
+        }
+
+        .search-box {
+            width: 90%;
+            max-width: 600px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            margin: 15px 0;
+            box-sizing: border-box;
+        }
+
+        .categories {
+            margin: 10px 0 20px;
+        }
+
+        .category-button {
+            padding: 10px 16px;
+            margin: 5px;
+            border: 1px solid #ccc;
+            background: white;
             border-radius: 6px;
+            cursor: pointer;
             font-weight: bold;
         }
 
-        header .button {
-            background: white;
-            color: #111;
+        .category-button:hover {
+            background: #111;
+            color: white;
         }
 
         .products {
             max-width: 1000px;
-            margin: 30px auto;
+            margin: 20px auto 40px;
             padding: 20px;
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -99,8 +151,7 @@
         }
 
         .product h2 {
-            margin-top: 10px;
-            margin-bottom: 8px;
+            margin: 10px 0 8px;
         }
 
         .product p {
@@ -119,8 +170,36 @@
             margin: 15px 0;
         }
 
+        .quantity {
+            width: 60px;
+            padding: 9px;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin: 5px;
+        }
+
         .product .button {
             width: 80%;
+        }
+
+        .cart {
+            max-width: 900px;
+            margin: 30px auto 40px;
+            padding: 30px 20px;
+            background: white;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        .cart h2 {
+            margin-top: 0;
+        }
+
+        .cart-count {
+            font-weight: bold;
+            font-size: 18px;
         }
 
         .info {
@@ -147,6 +226,11 @@
         }
 
         @media (max-width: 700px) {
+
+            header {
+                padding: 50px 20px;
+            }
+
             header h1 {
                 font-size: 32px;
             }
@@ -161,7 +245,8 @@
             }
 
             nav a {
-                margin: 0 7px;
+                margin: 0 6px;
+                font-size: 14px;
             }
         }
     </style>
@@ -173,9 +258,22 @@
 
     <h1>The Figure Hideout</h1>
 
-    <p>Discover collectible figures for fans and collectors.</p>
+    <p>
+        Discover collectible figures and statues for fans,
+        collectors and enthusiasts.
+    </p>
 
-    <a href="#products" class="button">Shop Now</a>
+    <p>
+        Explore our collection and find your next favorite piece.
+    </p>
+
+    <a href="#products" class="button">
+        Shop Collection
+    </a>
+
+    <a href="https://wa.me/2348101086854" class="button">
+        Chat With Us
+    </a>
 
 </header>
 
@@ -185,11 +283,54 @@
 
     <a href="shop.html">Shop</a>
 
+    <a href="about.html">About Us</a>
+
+    <a href="contact.html">Contact</a>
+
 </nav>
+
+
+<section class="shop-tools">
+
+    <h2>Our Collection</h2>
+
+    <p>Browse our collectible figures and statues.</p>
+
+    <input
+        type="text"
+        id="search"
+        class="search-box"
+        placeholder="Search for a figure..."
+        onkeyup="searchProducts()"
+    >
+
+    <div class="categories">
+
+        <button class="category-button" onclick="filterProducts('all')">
+            All
+        </button>
+
+        <button class="category-button" onclick="filterProducts('figure')">
+            Figures
+        </button>
+
+        <button class="category-button" onclick="filterProducts('statue')">
+            Statues
+        </button>
+
+        <button class="category-button" onclick="filterProducts('character')">
+            Characters
+        </button>
+
+    </div>
+
+</section>
+
 
 <div class="products" id="products">
 
-    <div class="product">
+
+    <div class="product" data-category="figure" data-name="Collectible Figure">
 
         <img src="./figure1.jpg" alt="Collectible Figure">
 
@@ -201,12 +342,29 @@
 
         <p class="price">$99.99</p>
 
-        <a href="https://wa.me/2348101086854?text=Hello%2C%20I%27m%20interested%20in%20the%20Collectible%20Figure%20for%20%2499.99." class="button">Buy Now</a>
+        <label>
+            Quantity:
+            <input
+                class="quantity"
+                type="number"
+                min="1"
+                value="1"
+                id="qty1"
+            >
+        </label>
+
+        <br>
+
+        <button
+            class="button"
+            onclick="addToCart('Collectible Figure', 99.99, 'qty1')">
+            Add to Cart
+        </button>
 
     </div>
 
 
-    <div class="product">
+    <div class="product" data-category="statue" data-name="Collectible Statue">
 
         <img src="./figure2.jpg" alt="Collectible Statue">
 
@@ -218,12 +376,29 @@
 
         <p class="price">$149.99</p>
 
-        <a href="https://wa.me/2348101086854?text=Hello%2C%20I%27m%20interested%20in%20the%20Collectible%20Statue%20for%20%24149.99." class="button">Buy Now</a>
+        <label>
+            Quantity:
+            <input
+                class="quantity"
+                type="number"
+                min="1"
+                value="1"
+                id="qty2"
+            >
+        </label>
+
+        <br>
+
+        <button
+            class="button"
+            onclick="addToCart('Collectible Statue', 149.99, 'qty2')">
+            Add to Cart
+        </button>
 
     </div>
 
 
-    <div class="product">
+    <div class="product" data-category="character" data-name="Predator">
 
         <img src="./figure3.jpg" alt="Predator">
 
@@ -235,12 +410,29 @@
 
         <p class="price">$119.99</p>
 
-        <a href="https://wa.me/2348101086854?text=Hello%2C%20I%27m%20interested%20in%20the%20Predator%20figure%20for%20%24119.99." class="button">Buy Now</a>
+        <label>
+            Quantity:
+            <input
+                class="quantity"
+                type="number"
+                min="1"
+                value="1"
+                id="qty3"
+            >
+        </label>
+
+        <br>
+
+        <button
+            class="button"
+            onclick="addToCart('Predator', 119.99, 'qty3')">
+            Add to Cart
+        </button>
 
     </div>
 
 
-    <div class="product">
+    <div class="product" data-category="character" data-name="Carnage">
 
         <img src="./figure4.jpg" alt="Carnage">
 
@@ -252,12 +444,29 @@
 
         <p class="price">$129.99</p>
 
-        <a href="https://wa.me/2348101086854?text=Hello%2C%20I%27m%20interested%20in%20the%20Carnage%20figure%20for%20%24129.99." class="button">Buy Now</a>
+        <label>
+            Quantity:
+            <input
+                class="quantity"
+                type="number"
+                min="1"
+                value="1"
+                id="qty4"
+            >
+        </label>
+
+        <br>
+
+        <button
+            class="button"
+            onclick="addToCart('Carnage', 129.99, 'qty4')">
+            Add to Cart
+        </button>
 
     </div>
 
 
-    <div class="product">
+    <div class="product" data-category="character" data-name="Nemesis">
 
         <img src="./figure5.jpg" alt="Nemesis">
 
@@ -269,12 +478,29 @@
 
         <p class="price">$139.99</p>
 
-        <a href="https://wa.me/2348101086854?text=Hello%2C%20I%27m%20interested%20in%20the%20Nemesis%20figure%20for%20%24139.99." class="button">Buy Now</a>
+        <label>
+            Quantity:
+            <input
+                class="quantity"
+                type="number"
+                min="1"
+                value="1"
+                id="qty5"
+            >
+        </label>
+
+        <br>
+
+        <button
+            class="button"
+            onclick="addToCart('Nemesis', 139.99, 'qty5')">
+            Add to Cart
+        </button>
 
     </div>
 
 
-    <div class="product">
+    <div class="product" data-category="character" data-name="Batman">
 
         <img src="./figure6.jpg" alt="Batman">
 
@@ -286,28 +512,86 @@
 
         <p class="price">$159.99</p>
 
-        <a href="https://wa.me/2348101086854?text=Hello%2C%20I%27m%20interested%20in%20the%20Batman%20figure%20for%20%24159.99." class="button">Buy Now</a>
+        <label>
+            Quantity:
+            <input
+                class="quantity"
+                type="number"
+                min="1"
+                value="1"
+                id="qty6"
+            >
+        </label>
+
+        <br>
+
+        <button
+            class="button"
+            onclick="addToCart('Batman', 159.99, 'qty6')">
+            Add to Cart
+        </button>
 
     </div>
 
 
-    <div class="product">
+    <div class="product" data-category="figure" data-name="Collectible Figure Special">
 
-        <img src="./figure7.jpg" alt="Collectible Figure">
+        <img src="./figure7.jpg" alt="Special Collectible Figure">
 
         <p class="available">✓ Available</p>
 
-        <h2>Collectible Figure</h2>
+        <h2>Special Collectible Figure</h2>
 
         <p>Special collectible figure for your collection.</p>
 
         <p class="price">$169.99</p>
 
-        <a href="https://wa.me/2348101086854?text=Hello%2C%20I%27m%20interested%20in%20the%20Collectible%20Figure%20for%20%24169.99." class="button">Buy Now</a>
+        <label>
+            Quantity:
+            <input
+                class="quantity"
+                type="number"
+                min="1"
+                value="1"
+                id="qty7"
+            >
+        </label>
+
+        <br>
+
+        <button
+            class="button"
+            onclick="addToCart('Special Collectible Figure', 169.99, 'qty7')">
+            Add to Cart
+        </button>
 
     </div>
 
 </div>
+
+
+<section class="cart">
+
+    <h2>🛒 Your Cart</h2>
+
+    <p class="cart-count" id="cartCount">
+        Your cart is empty.
+    </p>
+
+    <p id="cartItems"></p>
+
+    <h3 id="cartTotal"></h3>
+
+    <button class="button" onclick="orderCart()">
+        Order Cart on WhatsApp
+    </button>
+
+    <button class="button" onclick="clearCart()">
+        Clear Cart
+    </button>
+
+</section>
+
 
 <section class="info">
 
@@ -315,7 +599,8 @@
 
     <p>
         We offer collectible figures for fans and collectors.
-        Browse our collection and contact us on WhatsApp to place an order.
+        Browse our collection, add products to your cart,
+        and contact us on WhatsApp to place an order.
     </p>
 
     <a href="https://wa.me/2348101086854" class="button">
@@ -324,6 +609,7 @@
 
 </section>
 
+
 <footer>
 
     <p>©️ 2026 The Figure Hideout. All rights reserved.</p>
@@ -331,6 +617,214 @@
     <p>Collect. Display. Enjoy.</p>
 
 </footer>
+
+
+<script>
+
+    let cart = [];
+
+    function addToCart(name, price, quantityId) {
+
+        let quantity = parseInt(
+            document.getElementById(quantityId).value
+        );
+
+        if (quantity < 1) {
+            quantity = 1;
+        }
+
+        let existingProduct = cart.find(
+            item => item.name === name
+        );
+
+        if (existingProduct) {
+
+            existingProduct.quantity += quantity;
+
+        } else {
+
+            cart.push({
+                name: name,
+                price: price,
+                quantity: quantity
+            });
+
+        }
+
+        updateCart();
+
+        alert(name + " added to your cart.");
+
+    }
+
+
+    function updateCart() {
+
+        let cartCount = document.getElementById("cartCount");
+
+        let cartItems = document.getElementById("cartItems");
+
+        let cartTotal = document.getElementById("cartTotal");
+
+        if (cart.length === 0) {
+
+            cartCount.innerText = "Your cart is empty.";
+
+            cartItems.innerText = "";
+
+            cartTotal.innerText = "";
+
+            return;
+
+        }
+
+        let totalItems = 0;
+
+        let totalPrice = 0;
+
+        let itemText = "";
+
+        cart.forEach(function(item) {
+
+            totalItems += item.quantity;
+
+            totalPrice += item.price * item.quantity;
+
+            itemText +=
+                item.name +
+                " × " +
+                item.quantity +
+                " — $" +
+                (item.price * item.quantity).toFixed(2) +
+                "\n";
+
+        });
+
+        cartCount.innerText =
+            "You have " + totalItems + " item(s) in your cart.";
+
+        cartItems.innerText = itemText;
+
+        cartTotal.innerText =
+            "Total: $" + totalPrice.toFixed(2);
+
+    }
+
+
+    function orderCart() {
+
+        if (cart.length === 0) {
+
+            alert("Your cart is empty.");
+
+            return;
+
+        }
+
+        let message =
+            "Hello, I'm interested in ordering:%0A%0A";
+
+        let totalPrice = 0;
+
+        cart.forEach(function(item) {
+
+            let itemTotal =
+                item.price * item.quantity;
+
+            totalPrice += itemTotal;
+
+            message +=
+                item.name +
+                " × " +
+                item.quantity +
+                " — $" +
+                itemTotal.toFixed(2) +
+                "%0A";
+
+        });
+
+        message +=
+            "%0ATotal: $" +
+            totalPrice.toFixed(2);
+
+        window.open(
+            "https://wa.me/2348101086854?text=" +
+            message,
+            "_blank"
+        );
+
+    }
+
+
+    function clearCart() {
+
+        cart = [];
+
+        updateCart();
+
+    }
+
+
+    function searchProducts() {
+
+        let search =
+            document.getElementById("search")
+            .value
+            .toLowerCase();
+
+        let products =
+            document.querySelectorAll(".product");
+
+        products.forEach(function(product) {
+
+            let name =
+                product
+                .getAttribute("data-name")
+                .toLowerCase();
+
+            if (name.includes(search)) {
+
+                product.style.display = "";
+
+            } else {
+
+                product.style.display = "none";
+
+            }
+
+        });
+
+    }
+
+
+    function filterProducts(category) {
+
+        let products =
+            document.querySelectorAll(".product");
+
+        products.forEach(function(product) {
+
+            let productCategory =
+                product.getAttribute("data-category");
+
+            if (
+                category === "all" ||
+                productCategory === category
+            ) {
+
+                product.style.display = "";
+
+            } else {
+
+                product.style.display = "none";
+
+            }
+
+        });
+
+    }
+
+</script>
 
 </body>
 
