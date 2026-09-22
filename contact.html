@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Contact Us - The Figure Hideout</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #f5f5f5;
+            color: #222;
+        }
+
+        header {
+            background: linear-gradient(135deg, #111, #333);
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        header h1 {
+            font-size: 42px;
+            margin: 0 0 10px;
+        }
+
+        header p {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        nav {
+            background: white;
+            text-align: center;
+            padding: 18px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        nav a {
+            color: #111;
+            text-decoration: none;
+            margin: 0 12px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        section {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 35px 25px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        section h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .contact-box {
+            text-align: center;
+            line-height: 1.7;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 13px 22px;
+            margin: 10px 5px;
+            background: #111;
+            color: white;
+            text-decoration: none;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        form {
+            max-width: 600px;
+            margin: auto;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+        }
+
+        textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        button {
+            width: 100%;
+            padding: 13px;
+            margin-top: 18px;
+            background: #111;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #333;
+        }
+
+        footer {
+            background: #111;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 30px;
+        }
+
+        footer p {
+            margin: 5px;
+        }
+
+        @media (max-width: 700px) {
+
+            header h1 {
+                font-size: 32px;
+            }
+
+            nav a {
+                margin: 0 6px;
+                font-size: 14px;
+            }
+
+            section {
+                margin: 20px 15px;
+                padding: 25px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <h1>Contact The Figure Hideout</h1>
+
+    <p>
+        Have a question about a collectible?
+        We're here to help.
+    </p>
+
+</header>
+
+<nav>
+
+    <a href="index.html">Home</a>
+
+    <a href="shop.html">Shop</a>
+
+    <a href="about.html">About Us</a>
+
+    <a href="contact.html">Contact</a>
+
+</nav>
+
+
+<section>
+
+    <h2>Get In Touch</h2>
+
+    <div class="contact-box">
+
+        <p>
+            Interested in one of our figures?
+            Send us a message and we'll help you with your order.
+        </p>
+
+        <a
+            href="https://wa.me/2348101086854"
+            class="button">
+            Chat With Us on WhatsApp
+        </a>
+
+    </div>
+
+</section>
+
+
+<section>
+
+    <h2>Send Us a Message</h2>
+
+    <form
+        action="https://formsubmit.co/idris08675@gmail.com"
+        method="POST">
+
+        <input
+            type="hidden"
+            name="_subject"
+            value="New Message - The Figure Hideout">
+
+        <label for="name">
+            Your Name
+        </label>
+
+        <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Enter your name"
+            required>
+
+
+        <label for="email">
+            Your Email
+        </label>
+
+        <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Enter your email"
+            required>
+
+
+        <label for="message">
+            Your Message
+        </label>
+
+        <textarea
+            id="message"
+            name="message"
+            placeholder="Tell us what you're interested in..."
+            required></textarea>
+
+
+        <button type="submit">
+            Send Message
+        </button>
+
+    </form>
+
+</section>
+
+
+<section>
+
+    <h2>Ready to Shop?</h2>
+
+    <div class="contact-box">
+
+        <p>
+            Browse our collection and find your next collectible.
+        </p>
+
+        <a href="shop.html" class="button">
+            Browse Collectibles
+        </a>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    <p>©️ 2026 The Figure Hideout. All rights reserved.</p>
+
+    <p>Collect. Display. Enjoy.</p>
+
+</footer>
+
+</body>
+
+</html>
