@@ -18,7 +18,16 @@
             background: linear-gradient(135deg, #111, #333);
             color: white;
             text-align: center;
-            padding: 60px 20px;
+            padding: 45px 20px 55px;
+        }
+
+        .logo {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto 18px;
+            border-radius: 15px;
         }
 
         header h1 {
@@ -29,6 +38,8 @@
         header p {
             font-size: 18px;
             line-height: 1.6;
+            max-width: 650px;
+            margin: auto;
         }
 
         nav {
@@ -82,6 +93,10 @@
             font-weight: bold;
         }
 
+        .button:hover {
+            background: #333;
+        }
+
         form {
             max-width: 600px;
             margin: auto;
@@ -95,7 +110,8 @@
         }
 
         input,
-        textarea {
+        textarea,
+        select {
             width: 100%;
             padding: 12px;
             border: 1px solid #ccc;
@@ -127,6 +143,24 @@
             background: #333;
         }
 
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .info-card {
+            padding: 20px;
+            background: #f7f7f7;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .info-card h3 {
+            margin-top: 0;
+        }
+
         footer {
             background: #111;
             color: white;
@@ -145,6 +179,11 @@
                 font-size: 32px;
             }
 
+            .logo {
+                width: 85px;
+                height: 85px;
+            }
+
             nav a {
                 margin: 0 6px;
                 font-size: 14px;
@@ -154,6 +193,10 @@
                 margin: 20px 15px;
                 padding: 25px 20px;
             }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -162,11 +205,13 @@
 
 <header>
 
+    <img src="logo.jpg" alt="The Figure Hideout Logo" class="logo">
+
     <h1>Contact The Figure Hideout</h1>
 
     <p>
-        Have a question about a collectible?
-        We're here to help.
+        Have a question about a collectible or want to place an order?
+        Send us a message and we'll be happy to help.
     </p>
 
 </header>
@@ -183,7 +228,6 @@
 
 </nav>
 
-
 <section>
 
     <h2>Get In Touch</h2>
@@ -191,8 +235,9 @@
     <div class="contact-box">
 
         <p>
-            Interested in one of our figures?
-            Send us a message and we'll help you with your order.
+            Whether you have a question about a product,
+            want to check availability, or need help with an order,
+            you can contact us directly.
         </p>
 
         <a
@@ -203,8 +248,37 @@
 
     </div>
 
-</section>
+    <div class="contact-info">
 
+        <div class="info-card">
+
+            <h3>💬 WhatsApp</h3>
+
+            <p>
+                Chat with us directly about your order.
+            </p>
+
+            <a
+                href="https://wa.me/2348101086854"
+                class="button">
+                WhatsApp Us
+            </a>
+
+        </div>
+
+        <div class="info-card">
+
+            <h3>📧 Email</h3>
+
+            <p>
+                Send us a message using the form below.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
 
 <section>
 
@@ -217,31 +291,76 @@
         <input
             type="hidden"
             name="_subject"
-            value="New Message - The Figure Hideout">
+            value="New Customer Message - The Figure Hideout">
+
+        <input
+            type="hidden"
+            name="_captcha"
+            value="true">
 
         <label for="name">
-            Your Name
+            Full Name
         </label>
 
         <input
             type="text"
             id="name"
             name="name"
-            placeholder="Enter your name"
+            placeholder="Enter your full name"
             required>
 
-
         <label for="email">
-            Your Email
+            Email Address
         </label>
 
         <input
             type="email"
             id="email"
             name="email"
-            placeholder="Enter your email"
+            placeholder="Enter your email address"
             required>
 
+        <label for="phone">
+            Phone / WhatsApp Number
+        </label>
+
+        <input
+            type="tel"
+            id="phone"
+            name="phone"
+            placeholder="Enter your phone or WhatsApp number"
+            required>
+
+        <label for="subject">
+            What can we help you with?
+        </label>
+
+        <select
+            id="subject"
+            name="subject"
+            required>
+
+            <option value="">
+                Select an option
+            </option>
+
+            <option value="Product Question">
+                Product Question
+            </option>
+
+            <option value="Order">
+                I want to place an order
+            </option>
+
+            <option value="Availability">
+                Check product availability
+            </option>
+
+            <option value="Other">
+                Other
+            </option>
+
+        </select>
 
         <label for="message">
             Your Message
@@ -250,9 +369,8 @@
         <textarea
             id="message"
             name="message"
-            placeholder="Tell us what you're interested in..."
+            placeholder="Tell us what you are interested in..."
             required></textarea>
-
 
         <button type="submit">
             Send Message
@@ -261,7 +379,6 @@
     </form>
 
 </section>
-
 
 <section>
 
@@ -280,7 +397,6 @@
     </div>
 
 </section>
-
 
 <footer>
 
