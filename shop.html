@@ -4,8 +4,6 @@
 <head>
     <title>Shop - The Figure Hideout</title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -18,121 +16,50 @@
             background: linear-gradient(135deg, #111, #333);
             color: white;
             text-align: center;
-            padding: 40px 20px 60px;
-        }
-
-        .logo {
-            width: 120px;
-            height: 120px;
-            object-fit: contain;
-            display: block;
-            margin: 0 auto 20px;
-            border-radius: 15px;
+            padding: 50px 20px;
         }
 
         header h1 {
-            font-size: 42px;
-            margin: 0 0 12px;
+            margin: 0;
+            font-size: 38px;
         }
 
         header p {
             font-size: 18px;
-            max-width: 650px;
-            margin: 10px auto;
-            line-height: 1.6;
-        }
-
-        .button {
-            display: inline-block;
-            padding: 12px 20px;
-            margin: 8px 4px;
-            background: #111;
-            color: white;
-            text-decoration: none;
-            border-radius: 7px;
-            font-weight: bold;
-            border: none;
-            cursor: pointer;
-        }
-
-        header .button {
-            background: white;
-            color: #111;
         }
 
         nav {
-            background: white;
+            background: #222;
             text-align: center;
-            padding: 18px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 10;
+            padding: 15px;
         }
 
         nav a {
-            color: #111;
+            color: white;
             text-decoration: none;
-            margin: 0 12px;
+            margin: 0 15px;
             font-weight: bold;
         }
 
         nav a:hover {
-            text-decoration: underline;
+            color: #ccc;
         }
 
-        .shop-tools {
+        .shop {
             max-width: 1000px;
-            margin: 30px auto 10px;
-            padding: 0 20px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .shop h2 {
             text-align: center;
-        }
-
-        .shop-tools h2 {
-            font-size: 30px;
-            margin-bottom: 8px;
-        }
-
-        .shop-tools p {
-            color: #666;
-        }
-
-        .search-box {
-            width: 90%;
-            max-width: 600px;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 16px;
-            margin: 15px 0;
-            box-sizing: border-box;
-        }
-
-        .categories {
-            margin: 10px 0 20px;
-        }
-
-        .category-button {
-            padding: 10px 16px;
-            margin: 5px;
-            border: 1px solid #ccc;
-            background: white;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        .category-button:hover {
-            background: #111;
-            color: white;
+            font-size: 32px;
+            margin-bottom: 30px;
         }
 
         .products {
-            max-width: 1000px;
-            margin: 20px auto 40px;
-            padding: 20px;
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 25px;
         }
 
@@ -141,658 +68,106 @@
             padding: 20px;
             border-radius: 12px;
             text-align: center;
-            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .product:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
         .product img {
             width: 100%;
-            height: 300px;
-            object-fit: contain;
-            display: block;
-            border-radius: 8px;
-            margin-bottom: 15px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 10px;
         }
 
-        .product h2 {
-            margin: 10px 0 8px;
-        }
-
-        .product p {
-            line-height: 1.5;
-        }
-
-        .available {
-            font-size: 14px;
-            font-weight: bold;
-            margin: 8px 0;
+        .product h3 {
+            margin: 15px 0 8px;
         }
 
         .price {
-            font-size: 22px;
+            font-size: 20px;
             font-weight: bold;
-            margin: 15px 0;
+            margin: 10px 0;
         }
 
-        .quantity {
-            width: 60px;
-            padding: 9px;
-            text-align: center;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            margin: 5px;
+        .button {
+            display: inline-block;
+            background: #111;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            margin-top: 10px;
         }
 
-        .product .button {
-            width: 80%;
-        }
-
-        .cart {
-            max-width: 900px;
-            margin: 30px auto 40px;
-            padding: 30px 20px;
-            background: white;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-        }
-
-        .cart h2 {
-            margin-top: 0;
-        }
-
-        .cart-count {
-            font-weight: bold;
-            font-size: 18px;
-        }
-
-        .info {
-            max-width: 900px;
-            margin: 20px auto 40px;
-            padding: 30px 20px;
-            text-align: center;
-        }
-
-        .info h2 {
-            margin-bottom: 10px;
+        .button:hover {
+            background: #444;
         }
 
         footer {
             background: #111;
             color: white;
             text-align: center;
-            padding: 25px;
-            margin-top: 30px;
-        }
-
-        footer p {
-            margin: 5px;
-        }
-
-        @media (max-width: 700px) {
-
-            header {
-                padding: 35px 20px 50px;
-            }
-
-            .logo {
-                width: 95px;
-                height: 95px;
-            }
-
-            header h1 {
-                font-size: 32px;
-            }
-
-            .products {
-                grid-template-columns: 1fr;
-                padding: 15px;
-            }
-
-            .product img {
-                height: 280px;
-            }
-
-            nav a {
-                margin: 0 6px;
-                font-size: 14px;
-            }
+            padding: 20px;
+            margin-top: 40px;
         }
     </style>
 </head>
 
 <body>
 
-<header>
-
-    <img src="logo.jpg" alt="The Figure Hideout Logo" class="logo">
-
-    <h1>The Figure Hideout</h1>
-
-    <p>
-        Discover collectible figures and statues for fans,
-        collectors and enthusiasts.
-    </p>
-
-    <p>
-        Explore our collection and find your next favorite piece.
-    </p>
-
-    <a href="#products" class="button">
-        Shop Collection
-    </a>
-
-    <a href="https://wa.me/2348101086854" class="button">
-        Chat With Us
-    </a>
-
-</header>
-
-<nav>
-
-    <a href="index.html">Home</a>
-
-    <a href="shop.html">Shop</a>
-
-    <a href="about.html">About Us</a>
-
-    <a href="contact.html">Contact</a>
-
-</nav>
-
-<section class="shop-tools">
-
-    <h2>Our Collection</h2>
-
-    <p>Browse our collectible figures and statues.</p>
-
-    <input
-        type="text"
-        id="search"
-        class="search-box"
-        placeholder="Search for a figure..."
-        onkeyup="searchProducts()"
-    >
-
-    <div class="categories">
-
-        <button class="category-button" onclick="filterProducts('all')">
-            All
-        </button>
-
-        <button class="category-button" onclick="filterProducts('figure')">
-            Figures
-        </button>
-
-        <button class="category-button" onclick="filterProducts('statue')">
-            Statues
-        </button>
-
-        <button class="category-button" onclick="filterProducts('character')">
-            Characters
-        </button>
-
-    </div>
-
-</section>
-
-<div class="products" id="products">
-
-    <div class="product" data-category="figure" data-name="Collectible Figure">
-
-        <img src="./figure1.jpg" alt="Collectible Figure">
-
-        <p class="available">✓ Available</p>
-
-        <h2>Collectible Figure</h2>
-
-        <p>Detailed collectible figure for collectors.</p>
-
-        <p class="price">$99.99</p>
-
-        <label>
-            Quantity:
-            <input
-                class="quantity"
-                type="number"
-                min="1"
-                value="1"
-                id="qty1"
-            >
-        </label>
-
-        <br>
-
-        <button
-            class="button"
-            onclick="addToCart('Collectible Figure', 99.99, 'qty1')">
-            Add to Cart
-        </button>
-
-    </div>
-
-    <div class="product" data-category="statue" data-name="Collectible Statue">
-
-        <img src="./figure2.jpg" alt="Collectible Statue">
-
-        <p class="available">✓ Available</p>
-
-        <h2>Collectible Statue</h2>
-
-        <p>Premium collectible statue for your collection.</p>
-
-        <p class="price">$149.99</p>
-
-        <label>
-            Quantity:
-            <input
-                class="quantity"
-                type="number"
-                min="1"
-                value="1"
-                id="qty2"
-            >
-        </label>
-
-        <br>
-
-        <button
-            class="button"
-            onclick="addToCart('Collectible Statue', 149.99, 'qty2')">
-            Add to Cart
-        </button>
-
-    </div>
-
-    <div class="product" data-category="character" data-name="Predator">
-
-        <img src="./figure3.jpg" alt="Predator">
-
-        <p class="available">✓ Available</p>
-
-        <h2>Predator</h2>
-
-        <p>Detailed collectible figure for collectors.</p>
-
-        <p class="price">$119.99</p>
-
-        <label>
-            Quantity:
-            <input
-                class="quantity"
-                type="number"
-                min="1"
-                value="1"
-                id="qty3"
-            >
-        </label>
-
-        <br>
-
-        <button
-            class="button"
-            onclick="addToCart('Predator', 119.99, 'qty3')">
-            Add to Cart
-        </button>
-
-    </div>
-
-    <div class="product" data-category="character" data-name="Carnage">
-
-        <img src="./figure4.jpg" alt="Carnage">
-
-        <p class="available">✓ Available</p>
-
-        <h2>Carnage</h2>
-
-        <p>Quality collectible figure for your collection.</p>
-
-        <p class="price">$129.99</p>
-
-        <label>
-            Quantity:
-            <input
-                class="quantity"
-                type="number"
-                min="1"
-                value="1"
-                id="qty4"
-            >
-        </label>
-
-        <br>
-
-        <button
-            class="button"
-            onclick="addToCart('Carnage', 129.99, 'qty4')">
-            Add to Cart
-        </button>
-
-    </div>
-
-    <div class="product" data-category="character" data-name="Nemesis">
-
-        <img src="./figure5.jpg" alt="Nemesis">
-
-        <p class="available">✓ Available</p>
-
-        <h2>Nemesis</h2>
-
-        <p>Beautiful figure for collectors and fans.</p>
-
-        <p class="price">$139.99</p>
-
-        <label>
-            Quantity:
-            <input
-                class="quantity"
-                type="number"
-                min="1"
-                value="1"
-                id="qty5"
-            >
-        </label>
-
-        <br>
-
-        <button
-            class="button"
-            onclick="addToCart('Nemesis', 139.99, 'qty5')">
-            Add to Cart
-        </button>
-
-    </div>
-
-    <div class="product" data-category="character" data-name="Batman">
-
-        <img src="./figure6.jpg" alt="Batman">
-
-        <p class="available">✓ Available</p>
-
-        <h2>Batman</h2>
-
-        <p>Premium figure made for collectors.</p>
-
-        <p class="price">$159.99</p>
-
-        <label>
-            Quantity:
-            <input
-                class="quantity"
-                type="number"
-                min="1"
-                value="1"
-                id="qty6"
-            >
-        </label>
-
-        <br>
-
-        <button
-            class="button"
-            onclick="addToCart('Batman', 159.99, 'qty6')">
-            Add to Cart
-        </button>
-
-    </div>
-
-    <div class="product" data-category="figure" data-name="Collectible Figure Special">
-
-        <img src="./figure7.jpg" alt="Special Collectible Figure">
-
-        <p class="available">✓ Available</p>
-
-        <h2>Special Collectible Figure</h2>
-
-        <p>Special collectible figure for your collection.</p>
-
-        <p class="price">$169.99</p>
-
-        <label>
-            Quantity:
-            <input
-                class="quantity"
-                type="number"
-                min="1"
-                value="1"
-                id="qty7"
-            >
-        </label>
-
-        <br>
-
-        <button
-            class="button"
-            onclick="addToCart('Special Collectible Figure', 169.99, 'qty7')">
-            Add to Cart
-        </button>
-
-    </div>
-
-</div>
-
-<section class="cart">
-
-    <h2>🛒 Your Cart</h2>
-
-    <p class="cart-count" id="cartCount">
-        Your cart is empty.
-    </p>
-
-    <p id="cartItems"></p>
-
-    <h3 id="cartTotal"></h3>
-
-    <button class="button" onclick="orderCart()">
-        Order Cart on WhatsApp
-    </button>
-
-    <button class="button" onclick="clearCart()">
-        Clear Cart
-    </button>
-
-</section>
-
-<section class="info">
-
-    <h2>Why Shop With Us?</h2>
-
-    <p>
-        We offer collectible figures for fans and collectors.
-        Browse our collection, add products to your cart,
-        and contact us on WhatsApp to place an order.
-    </p>
-
-    <a href="https://wa.me/2348101086854" class="button">
-        Contact Us on WhatsApp
-    </a>
-
-</section>
-
-<footer>
-
-    <p>©️ 2026 The Figure Hideout. All rights reserved.</p>
-
-    <p>Collect. Display. Enjoy.</p>
-
-</footer>
-
-<script>
-
-    let cart = [];
-
-    function addToCart(name, price, quantityId) {
-
-        let quantity = parseInt(
-            document.getElementById(quantityId).value
-        );
-
-        if (quantity < 1) {
-            quantity = 1;
-        }
-
-        let existingProduct = cart.find(
-            item => item.name === name
-        );
-
-        if (existingProduct) {
-            existingProduct.quantity += quantity;
-        } else {
-            cart.push({
-                name: name,
-                price: price,
-                quantity: quantity
-            });
-        }
-
-        updateCart();
-
-        alert(name + " added to your cart.");
-    }
-
-    function updateCart() {
-
-        let cartCount = document.getElementById("cartCount");
-        let cartItems = document.getElementById("cartItems");
-        let cartTotal = document.getElementById("cartTotal");
-
-        if (cart.length === 0) {
-
-            cartCount.innerText = "Your cart is empty.";
-            cartItems.innerText = "";
-            cartTotal.innerText = "";
-
-            return;
-        }
-
-        let totalItems = 0;
-        let totalPrice = 0;
-        let itemText = "";
-
-        cart.forEach(function(item) {
-
-            totalItems += item.quantity;
-
-            totalPrice += item.price * item.quantity;
-
-            itemText +=
-                item.name +
-                " × " +
-                item.quantity +
-                " — $" +
-                (item.price * item.quantity).toFixed(2) +
-                "\n";
-        });
-
-        cartCount.innerText =
-            "You have " + totalItems + " item(s) in your cart.";
-
-        cartItems.innerText = itemText;
-
-        cartTotal.innerText =
-            "Total: $" + totalPrice.toFixed(2);
-    }
-
-    function orderCart() {
-
-        if (cart.length === 0) {
-
-            alert("Your cart is empty.");
-
-            return;
-        }
-
-        let message =
-            "Hello, I'm interested in ordering:%0A%0A";
-
-        let totalPrice = 0;
-
-        cart.forEach(function(item) {
-
-            let itemTotal =
-                item.price * item.quantity;
-
-            totalPrice += itemTotal;
-
-            message +=
-                item.name +
-                " × " +
-                item.quantity +
-                " — $" +
-                itemTotal.toFixed(2) +
-                "%0A";
-        });
-
-        message +=
-            "%0ATotal: $" +
-            totalPrice.toFixed(2);
-
-        window.open(
-            "https://wa.me/2348101086854?text=" +
-            message,
-            "_blank"
-        );
-    }
-
-    function clearCart() {
-
-        cart = [];
-
-        updateCart();
-    }
-
-    function searchProducts() {
-
-        let search =
-            document.getElementById("search")
-            .value
-            .toLowerCase();
-
-        let products =
-            document.querySelectorAll(".product");
-
-        products.forEach(function(product) {
-
-            let name =
-                product
-                .getAttribute("data-name")
-                .toLowerCase();
-
-            if (name.includes(search)) {
-                product.style.display = "";
-            } else {
-                product.style.display = "none";
-            }
-        });
-    }
-
-    function filterProducts(category) {
-
-        let products =
-            document.querySelectorAll(".product");
-
-        products.forEach(function(product) {
-
-            let productCategory =
-                product.getAttribute("data-category");
-
-            if (
-                category === "all" ||
-                productCategory === category
-            ) {
-                product.style.display = "";
-            } else {
-                product.style.display = "none";
-            }
-        });
-    }
-
-</script>
+    <header>
+        <h1>The Figure Hideout</h1>
+        <p>Collect. Display. Enjoy.</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About</a>
+    </nav>
+
+    <section class="shop">
+
+        <h2>Our Figures</h2>
+
+        <div class="products">
+
+            <div class="product">
+                <img src="figure1.jpg.jpg" alt="Figure 1">
+                <h3>Figure 1</h3>
+                <p>Detailed collectible figure.</p>
+                <div class="price">$50</div>
+                <a href="https://wa.me/2348101086854" class="button">
+                    Ask About This Item
+                </a>
+            </div>
+
+            <div class="product">
+                <img src="figure2.jpg.jpg" alt="Figure 2">
+                <h3>Figure 2</h3>
+                <p>Premium collectible figure.</p>
+                <div class="price">$75</div>
+                <a href="https://wa.me/2348101086854" class="button">
+                    Ask About This Item
+                </a>
+            </div>
+
+            <div class="product">
+                <img src="figure3.jpg.jpg" alt="Figure 3">
+                <h3>Figure 3</h3>
+                <p>Great addition to your collection.</p>
+                <div class="price">$100</div>
+                <a href="https://wa.me/2348101086854" class="button">
+                    Ask About This Item
+                </a>
+            </div>
+
+        </div>
+
+    </section>
+
+    <footer>
+        <p>© 2026 The Figure Hideout. All rights reserved.</p>
+    </footer>
 
 </body>
 
